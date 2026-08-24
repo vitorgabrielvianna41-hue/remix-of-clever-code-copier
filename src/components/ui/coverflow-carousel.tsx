@@ -329,17 +329,18 @@ export function CoverflowCarousel({
 
 
                 className={cn(
-                  "absolute left-1/2 top-0 aspect-square cursor-zoom-in overflow-hidden rounded-2xl shadow-xl will-change-transform",
+                  "absolute left-1/2 top-0 cursor-zoom-in overflow-hidden rounded-2xl shadow-xl will-change-transform",
                   cardClassName,
                 )}
-                style={{ width: "var(--cf-card)" }}
+                style={{ width: "var(--cf-card)", aspectRatio: String(cardAspect) }}
               >
                 <img
                   src={slide.src}
                   alt={slide.alt}
                   draggable={false}
                   loading="lazy"
-                  className="size-full select-none object-cover"
+                  decoding="async"
+                  className="size-full select-none object-contain"
                 />
               </div>
             ))}
