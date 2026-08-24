@@ -60,6 +60,8 @@ const slides = [
 
 function rewriteAssets(html: string) {
   return html
+    // carregamento leve: imagens só quando aparecem na tela
+    .replace(/<img(?![^>]*\bloading=)/gi, '<img loading="lazy" decoding="async"')
     .replace(/\/assets\/kit_mockup_v2\.webp/g, kitMockup)
     .replace(/\/assets\/mapa_preview_(\d)\.webp/g, (_m, n) => mapas[(Number(n) - 1) % mapas.length]!)
     .replace(/\/assets\/bonus_(\d)\.webp/g, (_m, n) => bonusImgs[(Number(n) - 1) % bonusImgs.length]!)
@@ -172,10 +174,12 @@ function Index() {
 
           <CoverflowCarousel
             slides={slides}
+            cardWidth="clamp(230px, 68vw, 320px)"
+            cardAspect={1}
+            className="text-white"
+            cardClassName="bg-white p-1"
             showNavigation
             showPagination
-            className="text-white"
-            cardClassName="bg-white aspect-[4/3]"
             label="Prévia dos mapas mentais"
           />
 

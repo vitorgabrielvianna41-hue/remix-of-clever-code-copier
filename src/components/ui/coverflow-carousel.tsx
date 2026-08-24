@@ -24,6 +24,8 @@ export interface CoverflowCarouselProps {
   falloff?: number;
   fade?: number;
   cardWidth?: string;
+  /** width / height ratio of each card (1 = square, 4/3 = landscape) */
+  cardAspect?: number;
   gap?: number;
   loop?: boolean;
   showCaption?: boolean;
@@ -41,7 +43,8 @@ export function CoverflowCarousel({
   perspective = 3,
   falloff = 0.56,
   fade = 0.1,
-  cardWidth = "clamp(148px, 22vw, 260px)",
+  cardWidth = "clamp(210px, 62vw, 280px)",
+  cardAspect = 1,
   gap = 0.05,
   loop = true,
   showCaption = false,
@@ -304,7 +307,7 @@ export function CoverflowCarousel({
             ref={trackRef}
             className="relative mx-auto"
             style={{
-              height: "var(--cf-card)",
+              height: `calc(var(--cf-card) / ${cardAspect})`,
               transformStyle: "preserve-3d",
             }}
           >
@@ -326,17 +329,18 @@ export function CoverflowCarousel({
 
 
                 className={cn(
-                  "absolute left-1/2 top-0 aspect-square cursor-zoom-in overflow-hidden rounded-2xl shadow-xl will-change-transform",
+                  "absolute left-1/2 top-0 cursor-zoom-in overflow-hidden rounded-2xl shadow-xl will-change-transform",
                   cardClassName,
                 )}
-                style={{ width: "var(--cf-card)" }}
+                style={{ width: "var(--cf-card)", aspectRatio: String(cardAspect) }}
               >
                 <img
                   src={slide.src}
                   alt={slide.alt}
                   draggable={false}
                   loading="lazy"
-                  className="size-full select-none object-cover"
+                  decoding="async"
+                  className="size-full select-none object-contain"
                 />
               </div>
             ))}
