@@ -24,6 +24,8 @@ export interface CoverflowCarouselProps {
   falloff?: number;
   fade?: number;
   cardWidth?: string;
+  /** width / height ratio of each card (1 = square, 4/3 = landscape) */
+  cardAspect?: number;
   gap?: number;
   loop?: boolean;
   showCaption?: boolean;
