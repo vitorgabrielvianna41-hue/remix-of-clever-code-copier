@@ -60,6 +60,8 @@ const slides = [
 
 function rewriteAssets(html: string) {
   return html
+    // carregamento leve: imagens só quando aparecem na tela
+    .replace(/<img(?![^>]*\bloading=)/gi, '<img loading="lazy" decoding="async"')
     .replace(/\/assets\/kit_mockup_v2\.webp/g, kitMockup)
     .replace(/\/assets\/mapa_preview_(\d)\.webp/g, (_m, n) => mapas[(Number(n) - 1) % mapas.length]!)
     .replace(/\/assets\/bonus_(\d)\.webp/g, (_m, n) => bonusImgs[(Number(n) - 1) % bonusImgs.length]!)
