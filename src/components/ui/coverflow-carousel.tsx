@@ -307,7 +307,7 @@ export function CoverflowCarousel({
             ref={trackRef}
             className="relative mx-auto"
             style={{
-              height: "var(--cf-card)",
+              height: `calc(var(--cf-card) / ${cardAspect})`,
               transformStyle: "preserve-3d",
             }}
           >
