@@ -172,10 +172,12 @@ function Index() {
 
           <CoverflowCarousel
             slides={slides}
+            cardWidth="clamp(230px, 68vw, 320px)"
+            cardAspect={1}
+            className="text-white"
+            cardClassName="bg-white p-1"
             showNavigation
             showPagination
-            className="text-white"
-            cardClassName="bg-white aspect-[4/3]"
             label="Prévia dos mapas mentais"
           />
 
