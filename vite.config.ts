@@ -11,9 +11,8 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    // Pre-render the landing page to static HTML so the build can be deployed
-    // as a plain static site (Netlify: publish `dist/client`).
-    prerender: { enabled: true, crawlLinks: false },
-    pages: [{ path: "/", prerender: { enabled: true } }],
   },
+  // Outside Lovable (e.g. Netlify CI) build for Netlify. Inside Lovable,
+  // LOVABLE_NITRO_PRESET still pins the Cloudflare output.
+  nitro: { preset: "netlify" },
 });
