@@ -3,58 +3,58 @@ import { useEffect, useRef } from "react";
 
 import landingHtml from "../../public/mapa.html?raw";
 import { CoverflowCarousel } from "@/components/ui/coverflow-carousel";
-import kitMockupAsset from "@/assets/kit-mockup-psi.png.asset.json";
-import psiMapa2 from "@/assets/psi-mapa-2.png.asset.json";
-import psiMapa3 from "@/assets/psi-mapa-3.png.asset.json";
-import psiMapa4 from "@/assets/psi-mapa-4.png.asset.json";
-import psiMapa5 from "@/assets/psi-mapa-5.png.asset.json";
-import psiMapa6 from "@/assets/psi-mapa-6.png.asset.json";
-import psiMapa7 from "@/assets/psi-mapa-7.webp.asset.json";
-import depoimento1 from "@/assets/depoimento-novo-8.png.asset.json";
-import depoimento2 from "@/assets/depoimento-novo-9.png.asset.json";
-import depoimento3 from "@/assets/depoimento-novo-7.png.asset.json";
-import depoimento4 from "@/assets/depoimento-novo-10.png.asset.json";
+import kitMockupImg from "@/assets/kit-mockup-psi.webp";
+import psiMapa2 from "@/assets/psi-mapa-2.webp";
+import psiMapa3 from "@/assets/psi-mapa-3.webp";
+import psiMapa4 from "@/assets/psi-mapa-4.webp";
+import psiMapa5 from "@/assets/psi-mapa-5.webp";
+import psiMapa6 from "@/assets/psi-mapa-6.webp";
+import psiMapa7 from "@/assets/psi-mapa-7.webp";
+import depoimento1 from "@/assets/depoimento-novo-8.webp";
+import depoimento2 from "@/assets/depoimento-novo-9.webp";
+import depoimento3 from "@/assets/depoimento-novo-7.webp";
+import depoimento4 from "@/assets/depoimento-novo-10.webp";
 
-import bonus1 from "@/assets/bonus-psi-1.png.asset.json";
-import bonus2 from "@/assets/bonus-psi-2.png.asset.json";
-import bonus3 from "@/assets/bonus-psi-3.png.asset.json";
-import bonus4 from "@/assets/bonus-psi-4.png.asset.json";
-import bonus5 from "@/assets/bonus-psi-5.png.asset.json";
-import avatarRafael from "@/assets/avatar-rafael.jpg.asset.json";
+import bonus1 from "@/assets/bonus-psi-1.webp";
+import bonus2 from "@/assets/bonus-psi-2.webp";
+import bonus3 from "@/assets/bonus-psi-3.webp";
+import bonus4 from "@/assets/bonus-psi-4.webp";
+import bonus5 from "@/assets/bonus-psi-5.webp";
+import avatarRafael from "@/assets/avatar-rafael.webp";
 import avatar1 from "@/assets/avatar-1.jpg";
 import avatar2 from "@/assets/avatar-2.jpg";
 import avatar3 from "@/assets/avatar-3.jpg";
 import avatar4 from "@/assets/avatar-4.jpg";
 import avatar5 from "@/assets/avatar-5.jpg";
 
-const kitMockup = kitMockupAsset.url;
+const kitMockup = kitMockupImg;
 const mapas = [
-  psiMapa2.url,
-  psiMapa3.url,
-  psiMapa4.url,
-  psiMapa5.url,
-  psiMapa6.url,
-  psiMapa7.url,
+  psiMapa2,
+  psiMapa3,
+  psiMapa4,
+  psiMapa5,
+  psiMapa6,
+  psiMapa7,
 ];
-const bonusImgs = [bonus1.url, bonus2.url, bonus3.url, bonus4.url, bonus5.url];
+const bonusImgs = [bonus1, bonus2, bonus3, bonus4, bonus5];
 const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5];
 
 // Cada depoimento tem sua própria foto de produto e seu próprio avatar,
 // pareados para que a foto combine com o que a pessoa fala.
 const depoimentos: Record<string, { produto: string; avatar: string }> = {
-  mariana: { produto: depoimento4.url, avatar: avatars[0]! },
-  camila: { produto: depoimento2.url, avatar: avatars[1]! },
-  beatriz: { produto: depoimento1.url, avatar: avatars[2]! },
-  patricia: { produto: depoimento3.url, avatar: avatarRafael.url },
+  mariana: { produto: depoimento4, avatar: avatars[0]! },
+  camila: { produto: depoimento2, avatar: avatars[1]! },
+  beatriz: { produto: depoimento1, avatar: avatars[2]! },
+  patricia: { produto: depoimento3, avatar: avatarRafael },
 };
 
 const slides = [
-  { src: psiMapa2.url, alt: "Mapa mental de História da Psicologia" },
-  { src: psiMapa3.url, alt: "Mapa mental de Psicanálise — teorias de Freud" },
-  { src: psiMapa4.url, alt: "Mapa mental de Behaviorismo e Aprendizagem" },
-  { src: psiMapa5.url, alt: "Mapa mental de Psicologia Cognitiva" },
-  { src: psiMapa6.url, alt: "Mapa mental de Psicologia Social" },
-  { src: psiMapa7.url, alt: "Mapa mental de Neuropsicologia" },
+  { src: psiMapa2, alt: "Mapa mental de História da Psicologia" },
+  { src: psiMapa3, alt: "Mapa mental de Psicanálise — teorias de Freud" },
+  { src: psiMapa4, alt: "Mapa mental de Behaviorismo e Aprendizagem" },
+  { src: psiMapa5, alt: "Mapa mental de Psicologia Cognitiva" },
+  { src: psiMapa6, alt: "Mapa mental de Psicologia Social" },
+  { src: psiMapa7, alt: "Mapa mental de Neuropsicologia" },
 ];
 
 
@@ -67,7 +67,7 @@ function rewriteAssets(html: string) {
     .replace(/\/assets\/bonus_(\d)\.webp/g, (_m, n) => bonusImgs[(Number(n) - 1) % bonusImgs.length]!)
     .replace(
       /\/assets\/depoimento_(\w+)_produto\.webp/g,
-      (_m, name: string) => depoimentos[name]?.produto ?? depoimento1.url,
+      (_m, name: string) => depoimentos[name]?.produto ?? depoimento1,
     )
     .replace(
       /\/assets\/depoimento_(\w+)_avatar\.webp/g,

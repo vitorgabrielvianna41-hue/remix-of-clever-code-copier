@@ -12,4 +12,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Outside Lovable (e.g. Netlify CI) build for Netlify. Inside Lovable,
+  // LOVABLE_NITRO_PRESET still pins the Cloudflare output.
+  nitro: { preset: "netlify" },
 });
