@@ -27,34 +27,34 @@ import avatar3 from "@/assets/avatar-3.jpg";
 import avatar4 from "@/assets/avatar-4.jpg";
 import avatar5 from "@/assets/avatar-5.jpg";
 
-const kitMockup = kitMockupAsset.url;
+const kitMockup = kitMockupImg;
 const mapas = [
-  psiMapa2.url,
-  psiMapa3.url,
-  psiMapa4.url,
-  psiMapa5.url,
-  psiMapa6.url,
-  psiMapa7.url,
+  psiMapa2,
+  psiMapa3,
+  psiMapa4,
+  psiMapa5,
+  psiMapa6,
+  psiMapa7,
 ];
-const bonusImgs = [bonus1.url, bonus2.url, bonus3.url, bonus4.url, bonus5.url];
+const bonusImgs = [bonus1, bonus2, bonus3, bonus4, bonus5];
 const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5];
 
 // Cada depoimento tem sua própria foto de produto e seu próprio avatar,
 // pareados para que a foto combine com o que a pessoa fala.
 const depoimentos: Record<string, { produto: string; avatar: string }> = {
-  mariana: { produto: depoimento4.url, avatar: avatars[0]! },
-  camila: { produto: depoimento2.url, avatar: avatars[1]! },
-  beatriz: { produto: depoimento1.url, avatar: avatars[2]! },
-  patricia: { produto: depoimento3.url, avatar: avatarRafael.url },
+  mariana: { produto: depoimento4, avatar: avatars[0]! },
+  camila: { produto: depoimento2, avatar: avatars[1]! },
+  beatriz: { produto: depoimento1, avatar: avatars[2]! },
+  patricia: { produto: depoimento3, avatar: avatarRafael },
 };
 
 const slides = [
-  { src: psiMapa2.url, alt: "Mapa mental de História da Psicologia" },
-  { src: psiMapa3.url, alt: "Mapa mental de Psicanálise — teorias de Freud" },
-  { src: psiMapa4.url, alt: "Mapa mental de Behaviorismo e Aprendizagem" },
-  { src: psiMapa5.url, alt: "Mapa mental de Psicologia Cognitiva" },
-  { src: psiMapa6.url, alt: "Mapa mental de Psicologia Social" },
-  { src: psiMapa7.url, alt: "Mapa mental de Neuropsicologia" },
+  { src: psiMapa2, alt: "Mapa mental de História da Psicologia" },
+  { src: psiMapa3, alt: "Mapa mental de Psicanálise — teorias de Freud" },
+  { src: psiMapa4, alt: "Mapa mental de Behaviorismo e Aprendizagem" },
+  { src: psiMapa5, alt: "Mapa mental de Psicologia Cognitiva" },
+  { src: psiMapa6, alt: "Mapa mental de Psicologia Social" },
+  { src: psiMapa7, alt: "Mapa mental de Neuropsicologia" },
 ];
 
 
@@ -67,7 +67,7 @@ function rewriteAssets(html: string) {
     .replace(/\/assets\/bonus_(\d)\.webp/g, (_m, n) => bonusImgs[(Number(n) - 1) % bonusImgs.length]!)
     .replace(
       /\/assets\/depoimento_(\w+)_produto\.webp/g,
-      (_m, name: string) => depoimentos[name]?.produto ?? depoimento1.url,
+      (_m, name: string) => depoimentos[name]?.produto ?? depoimento1,
     )
     .replace(
       /\/assets\/depoimento_(\w+)_avatar\.webp/g,
