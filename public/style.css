@@ -715,3 +715,42 @@ h1, h2, h3, h4 {
   .offer-card { box-shadow: none; }
   .section { content-visibility: auto; contain-intrinsic-size: 800px; }
 }
+
+/* ===== PLANOS (premium + básico) ===== */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+.plans-grid > .section-label,
+.plans-grid > .section-title {
+  grid-column: 1 / -1;
+  justify-self: center;
+  text-align: center;
+}
+.plan-basic {
+  align-self: start;
+}
+.plan-basic-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+.btn-cta--ghost {
+  background: transparent !important;
+  color: var(--text-color, #1a1a1a) !important;
+  border: 2px solid #dfe4ea !important;
+  box-shadow: none !important;
+}
+@media (max-width: 900px) {
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+}
