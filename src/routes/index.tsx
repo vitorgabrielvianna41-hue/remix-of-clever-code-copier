@@ -184,12 +184,7 @@ function Index() {
           />
 
           <div style={{ textAlign: "center", marginTop: 40 }}>
-            <a
-              href="https://pay.wiapy.com/TI2COIh4nKmF"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta"
-            >
+            <a href="#value-stack-section" className="btn-cta">
               Quero Garantir Agora
             </a>
           </div>
