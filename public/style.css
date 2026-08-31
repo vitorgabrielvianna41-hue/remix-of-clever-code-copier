@@ -67,7 +67,8 @@ h1, h2, h3, h4 {
 .promo-banner strong { font-weight: 800; }
 
 /* ---------- Sections ---------- */
-.section { padding: 72px 0; }
+.section { padding: 56px 0; }
+@media (max-width: 768px) { .section { padding: 40px 0; } }
 .section--dark { background-color: var(--bg-dark); }
 .section--dark .section-subtitle { color: rgba(255, 255, 255, 0.7); }
 .section--dark .section-label { background: rgba(255, 255, 255, 0.1); color: #fff; }
@@ -719,7 +720,7 @@ h1, h2, h3, h4 {
 /* ===== PLANOS (premium + básico) ===== */
 .plans-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 28px;
   align-items: start;
 }
@@ -774,4 +775,16 @@ h1, h2, h3, h4 {
 @media (prefers-reduced-motion: reduce) {
   #value-stack-section:target .plans-grid,
   #value-stack-section.is-highlighted .plans-grid { animation: none; }
+}
+
+
+/* Destaque legível em seções escuras: amarelo como cor do texto */
+.section--dark .hl {
+  background: none;
+  padding: 0;
+  color: #ffd34d;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 211, 77, 0.45);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
 }
